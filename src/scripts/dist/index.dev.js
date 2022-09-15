@@ -13,7 +13,8 @@ var data = []; //Events
 document.addEventListener("DOMContentLoaded", getData);
 addTask.addEventListener("click", addTaskClickHandler);
 search.addEventListener("keyup", searchClickHandler);
-clearCompleted.addEventListener("click", clearCompletedClickHandler); //Event Handlers
+clearCompleted.addEventListener("click", clearCompletedClickHandler);
+clearSearch.addEventListener("click", clearSearchClickHandler); //Event Handlers
 
 function addTaskClickHandler(event) {
   event.preventDefault();
@@ -39,8 +40,12 @@ function removeHandler(id) {
   var deleteTask = data.find(function (task) {
     return task.id === id;
   });
+  tasksList.innerHTML += createHtmlConfirm(deleteTask);
+}
+
+function deleteTaskHandler(id) {
   data = data.filter(function (task) {
-    return task.id != deleteTask.id;
+    return task.id != id;
   });
   saveNewData();
   render();
@@ -60,6 +65,12 @@ function markHandler(id) {
 
 function searchClickHandler(event) {
   renderFilteredData(event.target.value);
+}
+
+function clearSearchClickHandler(event) {
+  event.preventDefault();
+  search.value = '';
+  render();
 }
 
 function clearCompletedClickHandler(event) {
@@ -101,6 +112,10 @@ function emptyForm() {
 
 function createHtmlTask(taskData) {
   return "<li class=\"main_tasks-item\" data-id=\"".concat(taskData.id, "\" data-todo=\"").concat(taskData.todo, "\">\n                <div class=\"details\">\n                    <p class=\"details_name\">").concat(taskData.name, "</p>\n                    <p class=\"details_assignee\">").concat(taskData.assignee, "</p>\n                </div>\n                <div class=\"control\">\n                    <button onClick=\"removeHandler(").concat(taskData.id, ")\" class=\"control_button-delete\">\u274C</button>\n                    <button onClick=\"markHandler(").concat(taskData.id, ")\" class=\"control_button-done\">\u2714\uFE0F</button>\n                </div>\n            </li> ");
+}
+
+function createHtmlConfirm(taskData) {
+  return "\n    <li class=\"tasks_delete\">\n        <p class=\"task_delete-title\">Are you sure you want to delete \"".concat(taskData.name, "\"?</p>\n        <div class=\"controls\">\n            <button onClick=\"deleteTaskHandler(").concat(taskData.id, ")\" class=\"controls-confirm\" >Confirm</button>\n            <button onClick=\"render()\" class=\"controls-decline\">Decline</button>\n        </div>\n    </li>\n    ");
 }
 
 function saveNewData() {

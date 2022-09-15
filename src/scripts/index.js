@@ -1,5 +1,4 @@
 "use strict";
-
 //Selectors 
 const taskForm = document.getElementById("task");
 const assignee = document.getElementById("assignee");
@@ -16,7 +15,7 @@ document.addEventListener("DOMContentLoaded", getData);
 addTask.addEventListener("click", addTaskClickHandler);
 search.addEventListener("keyup", searchClickHandler);
 clearCompleted.addEventListener("click", clearCompletedClickHandler);
-
+clearSearch.addEventListener("click", clearSearchClickHandler);
 //Event Handlers
 function addTaskClickHandler(event) {
     event.preventDefault();
@@ -38,10 +37,12 @@ function addTaskClickHandler(event) {
 }
 function removeHandler(id) {
     const deleteTask = data.find(task => task.id === id);
-    data = data.filter(task => task.id != deleteTask.id);
+    tasksList.innerHTML += createHtmlConfirm(deleteTask);
+}
+function deleteTaskHandler(id) {
+    data = data.filter(task => task.id != id);
     saveNewData();
     render();
-
 }
 function markHandler(id) {
     data = data.map(task => {
@@ -55,6 +56,11 @@ function markHandler(id) {
 }
 function searchClickHandler(event) {
     renderFilteredData(event.target.value);
+}
+function clearSearchClickHandler(event) {
+    event.preventDefault();
+    search.value = '';
+    render();
 }
 
 function clearCompletedClickHandler(event) {
@@ -105,6 +111,18 @@ function createHtmlTask(taskData) {
                     <button onClick="markHandler(${taskData.id})" class="control_button-done">✔️</button>
                 </div>
             </li> `
+}
+
+function createHtmlConfirm(taskData) {
+    return `
+    <li class="tasks_delete">
+        <p class="task_delete-title">Are you sure you want to delete "${taskData.name}"?</p>
+        <div class="controls">
+            <button onClick="deleteTaskHandler(${taskData.id})" class="controls-confirm" >Confirm</button>
+            <button onClick="render()" class="controls-decline">Decline</button>
+        </div>
+    </li>
+    `
 }
 
 function saveNewData() {

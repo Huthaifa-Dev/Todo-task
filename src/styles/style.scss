@@ -48,6 +48,7 @@ button {
     background: rgb(70, 178, 240);
     &:hover {
       background: rgb(75, 125, 168);
+      box-shadow: 0 0 10px rgba(75, 125, 168, 0.5);
     }
   }
 }
@@ -112,6 +113,7 @@ button {
     list-style: none;
     display: flex;
     flex-direction: column;
+    position: relative;
     gap: 1em;
     &-item {
       display: flex;
@@ -122,8 +124,12 @@ button {
       border: 1px solid #ccc;
       border-radius: 5px;
       transition: background 0.3s ease;
+      background-color: white;
       &:hover {
-        // background: #eee;
+        background: #eef;
+      }
+      &[data-todo="true"] {
+        background-color: rgba(84, 238, 130, 0.35);
       }
       .details {
         display: flex;
@@ -171,6 +177,48 @@ button {
             &:hover {
               text-shadow: 0 0 5px rgba(168, 0, 0, 0.5);
             }
+          }
+        }
+      }
+    }
+    .tasks_delete {
+      // background-color: white;
+      border-radius: 5px;
+      width: 80%;
+      left: 10%;
+      position: absolute;
+      padding: 2em 1em;
+      // border: 1px solid red;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: rgb(255, 255, 255);
+      gap: 1em;
+      box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.35);
+      p {
+        font-size: 0.85em;
+        font-weight: 600;
+        &::before {
+          content: "❗";
+          display: inline;
+        }
+      }
+      .controls {
+        display: flex;
+        justify-content: space-between;
+        &-confirm {
+          background-color: rgb(70, 178, 240);
+          &:hover {
+            background: rgb(75, 125, 168);
+            box-shadow: 0 0 10px rgba(75, 125, 168, 0.5);
+          }
+        }
+        &-decline {
+          background-color: rgb(232, 22, 22);
+          &:hover {
+            background: rgb(179, 46, 46);
+            box-shadow: 0 0 10px rgba(168, 75, 75, 0.5);
           }
         }
       }
