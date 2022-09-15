@@ -33,21 +33,19 @@
             <hr>
             <div class="main_search">
                 <input id="search" type="text" class="main_search-input" placeholder="Search...">
-                <div class="main_search-clear"></div>
+                <button id="clearSearch" class="main_search-clear">❌</button>
             </div>
             <ul id="tasks" class="main_tasks">
-                <li class="main_tasks-item">
-                    <div class="details">
-                        <p class="details_name">Name</p>
-                        <p class="details_assignee">Assignee</p>
-                    </div>
-                    <div class="control">
-                        <button class="control_button-delete">❌</button>
-                        <button class="control_button-done">✔️</button>
-                    </div>
-                </li>
             </ul>
         </main>
+        <footer class="footer" id="footer">
+            <div class="footer__left">
+                <p>Tasks : <span id="taskCount"></span></p>
+            </div>
+            <div class="footer__right">
+                <button id="clearCompleted">Clear Completed</button>
+            </div>
+        </footer>
     </div>
     <script src="./scripts/index.js"></script>
 </body>

@@ -83,7 +83,7 @@ button[type=submit]:hover {
 .main_search {
   position: relative;
   border-radius: 5px;
-  padding: 0.25em 0.5em;
+  padding: 0.5em 0;
   border: 1px solid white;
   transition: border 0.3s ease;
 }
@@ -92,19 +92,19 @@ button[type=submit]:hover {
 }
 .main_search input {
   border: none;
-  width: 85%;
+  width: 90%;
 }
 .main_search::before {
   content: "🔍";
   display: inline;
 }
-.main_search::after {
-  content: "❌";
-  display: inline;
+.main_search-clear {
   position: absolute;
-  right: 10px;
-  top: 20%;
+  right: 0.5em;
+  top: 50%;
+  transform: translateY(-50%);
   cursor: pointer;
+  background: none;
 }
 .main_tasks {
   list-style: none;
@@ -165,4 +165,28 @@ button[type=submit]:hover {
 }
 .main_tasks-item .control_button-delete:hover {
   text-shadow: 0 0 5px rgba(168, 0, 0, 0.5);
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 1em;
+  font-size: 0.8em;
+  color: #666;
+}
+.footer button {
+  padding: 0.25em 0.5em;
+  background: none;
+  font-size: 1.2em;
+  color: red;
+  opacity: 0.1;
+  transition: all 0.3s ease;
+}
+.footer button:hover {
+  box-shadow: 0 0 15px -5px rgba(168, 0, 0, 0.5);
+  opacity: 1;
+  color: white;
+  background: #e81616;
 }
