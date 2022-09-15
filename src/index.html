@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/dist/style.css">
+    <title>TODO App</title>
+</head>
+
+<body>
+    <div class="app-wrapper">
+        <header class="header">
+            <h1 class="header__title">TODO App</h1>
+        </header>
+        <main class="main">
+            <form class="main_form">
+                <div class="group">
+                    <div class="main_form-input name">
+                        <label for="task">Task</label>
+                        <input type="text" name="task" id="task" placeholder="Task">
+                    </div>
+                    <div class="main_form-input assignee">
+                        <label for="assignee">Assignee</label>
+                        <input type="text" name="assignee" id="assignee" placeholder="Assign to ...">
+                    </div>
+                </div>
+                <div class="main_form-submit">
+                    <button type="submit" id="addTask">Add</button>
+                </div>
+            </form>
+            <hr>
+            <div class="main_search">
+                <input id="search" type="text" class="main_search-input" placeholder="Search...">
+                <div class="main_search-clear"></div>
+            </div>
+            <ul id="tasks" class="main_tasks">
+                <li class="main_tasks-item">
+                    <div class="details">
+                        <p class="details_name">Name</p>
+                        <p class="details_assignee">Assignee</p>
+                    </div>
+                    <div class="control">
+                        <button class="control_button-delete">❌</button>
+                        <button class="control_button-done">✔️</button>
+                    </div>
+                </li>
+            </ul>
+        </main>
+    </div>
+    <script src="./scripts/index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,179 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: rgb(243, 243, 243);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: "Roboto", sans-serif;
+}
+
+.app-wrapper {
+  background: white;
+  padding: 25px;
+  border-radius: 5px;
+  box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  //   border: 1px solid green;
+  //   scale: 1.5;
+}
+input {
+  //   border: 1px solid orange;
+  padding: 0.5em;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+  &:focus {
+    border: 1px solid #333;
+  }
+  transition: border-color 0.3s ease;
+}
+button {
+  transition: background 0.3s ease;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  &[type="submit"] {
+    background: rgb(70, 178, 240);
+    &:hover {
+      background: rgb(75, 125, 168);
+    }
+  }
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  //   border: 1px solid red;
+  hr {
+    border: 1px solid #ccc;
+    border-radius: 2px;
+  }
+  &_form {
+    display: flex;
+    gap: 1em;
+
+    .group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em;
+    }
+    &-input {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5em;
+    }
+    &-submit {
+      display: flex;
+      align-items: flex-end;
+    }
+  }
+  &_search {
+    // background-color: red;
+    position: relative;
+    border-radius: 5px;
+    padding: 0.25em 0.5em;
+    border: 1px solid white;
+    transition: border 0.3s ease;
+    &:has(input:focus) {
+      border: 1px solid #ccc;
+    }
+    input {
+      border: none;
+      width: 85%;
+      //   border: 1px solid red;
+    }
+    &::before {
+      content: "🔍";
+      display: inline;
+    }
+    &::after {
+      content: "❌";
+      display: inline;
+      position: absolute;
+      right: 10px;
+      top: 20%;
+      cursor: pointer;
+    }
+  }
+  &_tasks {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    &-item {
+      display: flex;
+      //   align-items: center;
+      justify-content: space-between;
+      gap: 1em;
+      padding: 0.5em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+      &:hover {
+        // background: #eee;
+      }
+      .details {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        // border: 1px solid red;
+        flex: 1;
+        gap: 0.5em;
+        &_name {
+          font-weight: 600;
+          font-size: 1.2em;
+        }
+        &_assignee {
+          font-size: 0.8em;
+          color: #666;
+          //   padding-left: 5px;
+          &::before {
+            content: "👤";
+            display: inline;
+          }
+        }
+      }
+      .control {
+        // border: 1px solid green;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+        button {
+          padding: 0;
+          background: none;
+          font-size: 1.2em;
+        }
+        &_button {
+          transition: all 0.3s ease;
+          text-shadow: rgba(0, 0, 0, 0);
+          &-done {
+            // background: rgb(70, 178, 240);
+            color: white;
+            &:hover {
+              text-shadow: 0 0 5px rgba(75, 125, 168, 0.5);
+            }
+          }
+          &-delete {
+            color: white;
+            &:hover {
+              text-shadow: 0 0 5px rgba(168, 0, 0, 0.5);
+            }
+          }
+        }
+      }
+    }
+  }
+}
