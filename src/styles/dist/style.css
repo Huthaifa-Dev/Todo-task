@@ -130,6 +130,9 @@ button[type=submit]:hover {
 .main_tasks-item[data-isDone=true] {
   background-color: rgba(84, 238, 130, 0.35);
 }
+.main_tasks-item[data-isDone=true] p {
+  text-decoration: line-through;
+}
 .main_tasks-item .details {
   display: flex;
   flex-direction: column;

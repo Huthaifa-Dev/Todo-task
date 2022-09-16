@@ -130,6 +130,9 @@ button {
       }
       &[data-isDone="true"] {
         background-color: rgba(84, 238, 130, 0.35);
+        p {
+          text-decoration: line-through;
+        }
       }
       .details {
         display: flex;

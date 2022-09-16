@@ -76,10 +76,10 @@ function clearSearchClickHandler(event) {
 
 function clearCompletedClickHandler(event) {
   event.preventDefault();
-  console.log("clearCompletedClickHandler");
   data = data.filter(function (task) {
-    return task.isDone == "available";
+    return !task.isDone;
   });
+  saveNewData();
   render();
 } //Functions
 

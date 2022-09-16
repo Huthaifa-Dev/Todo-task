@@ -16,6 +16,7 @@ addTask.addEventListener("click", addTaskClickHandler);
 search.addEventListener("keyup", searchClickHandler);
 clearCompleted.addEventListener("click", clearCompletedClickHandler);
 clearSearch.addEventListener("click", clearSearchClickHandler);
+
 //Event Handlers
 function addTaskClickHandler(event) {
     event.preventDefault();
@@ -34,6 +35,7 @@ function addTaskClickHandler(event) {
         render();
         emptyForm();
         taskForm.focus();
+
     }
 }
 function removeHandler(id) {
@@ -66,9 +68,8 @@ function clearSearchClickHandler(event) {
 
 function clearCompletedClickHandler(event) {
     event.preventDefault();
-    console.log("clearCompletedClickHandler");
-    data = data.filter(task => task.isDone == "available");
-
+    data = data.filter(task => !task.isDone);
+    saveNewData();
     render();
 }
 
