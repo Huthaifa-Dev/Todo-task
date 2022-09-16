@@ -27,12 +27,13 @@ function addTaskClickHandler(event) {
       id: data.length + 1,
       name: newTask,
       assignee: newAssignee,
-      todo: false
+      isDone: false
     };
     data.push(newObj);
     saveNewData();
     render();
     emptyForm();
+    taskForm.focus();
   }
 }
 
@@ -54,7 +55,7 @@ function deleteTaskHandler(id) {
 function markHandler(id) {
   data = data.map(function (task) {
     if (task.id == id) {
-      task.todo = !task.todo;
+      task.isDone = !task.isDone;
     }
 
     return task;
@@ -77,7 +78,7 @@ function clearCompletedClickHandler(event) {
   event.preventDefault();
   console.log("clearCompletedClickHandler");
   data = data.filter(function (task) {
-    return task.todo == "available";
+    return task.isDone == "available";
   });
   render();
 } //Functions
@@ -102,16 +103,17 @@ function renderFilteredData(input) {
 }
 
 function getData(event) {
+  data = JSON.parse(localStorage.getItem('tasksList'));
   render();
 }
 
 function emptyForm() {
-  task.value = '';
+  taskForm.value = '';
   assignee.value = '';
 }
 
 function createHtmlTask(taskData) {
-  return "<li class=\"main_tasks-item\" data-id=\"".concat(taskData.id, "\" data-todo=\"").concat(taskData.todo, "\">\n                <div class=\"details\">\n                    <p class=\"details_name\">").concat(taskData.name, "</p>\n                    <p class=\"details_assignee\">").concat(taskData.assignee, "</p>\n                </div>\n                <div class=\"control\">\n                    <button onClick=\"removeHandler(").concat(taskData.id, ")\" class=\"control_button-delete\">\u274C</button>\n                    <button onClick=\"markHandler(").concat(taskData.id, ")\" class=\"control_button-done\">\u2714\uFE0F</button>\n                </div>\n            </li> ");
+  return "<li class=\"main_tasks-item\" data-id=\"".concat(taskData.id, "\" data-isDone=\"").concat(taskData.isDone, "\">\n                <div class=\"details\">\n                    <p class=\"details_name\">").concat(taskData.name, "</p>\n                    <p class=\"details_assignee\">").concat(taskData.assignee, "</p>\n                </div>\n                <div class=\"control\">\n                    <button onClick=\"removeHandler(").concat(taskData.id, ")\" class=\"control_button-delete\">\u274C</button>\n                    <button onClick=\"markHandler(").concat(taskData.id, ")\" class=\"control_button-done\">\u2714\uFE0F</button>\n                </div>\n            </li> ");
 }
 
 function createHtmlConfirm(taskData) {
@@ -119,5 +121,6 @@ function createHtmlConfirm(taskData) {
 }
 
 function saveNewData() {
-  console.log(data);
+  localStorage.setItem('tasksList', JSON.stringify(data));
+  console.log(localStorage.getItem('tasksList'));
 }

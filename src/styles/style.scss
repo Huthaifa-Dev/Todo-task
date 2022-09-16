@@ -128,7 +128,7 @@ button {
       &:hover {
         background: #eef;
       }
-      &[data-todo="true"] {
+      &[data-isDone="true"] {
         background-color: rgba(84, 238, 130, 0.35);
       }
       .details {

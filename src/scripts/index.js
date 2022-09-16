@@ -27,12 +27,13 @@ function addTaskClickHandler(event) {
             id: data.length + 1,
             name: newTask,
             assignee: newAssignee,
-            todo: false
+            isDone: false
         }
         data.push(newObj);
         saveNewData();
         render();
         emptyForm();
+        taskForm.focus();
     }
 }
 function removeHandler(id) {
@@ -47,7 +48,7 @@ function deleteTaskHandler(id) {
 function markHandler(id) {
     data = data.map(task => {
         if (task.id == id) {
-            task.todo = !task.todo;
+            task.isDone = !task.isDone;
         }
         return task
     })
@@ -66,7 +67,7 @@ function clearSearchClickHandler(event) {
 function clearCompletedClickHandler(event) {
     event.preventDefault();
     console.log("clearCompletedClickHandler");
-    data = data.filter(task => task.todo == "available");
+    data = data.filter(task => task.isDone == "available");
 
     render();
 }
@@ -91,17 +92,18 @@ function renderFilteredData(input) {
 
 
 function getData(event) {
+    data = JSON.parse(localStorage.getItem('tasksList'));
     render();
 }
 
 
 function emptyForm() {
-    task.value = '';
+    taskForm.value = '';
     assignee.value = '';
 }
 
 function createHtmlTask(taskData) {
-    return `<li class="main_tasks-item" data-id="${taskData.id}" data-todo="${taskData.todo}">
+    return `<li class="main_tasks-item" data-id="${taskData.id}" data-isDone="${taskData.isDone}">
                 <div class="details">
                     <p class="details_name">${taskData.name}</p>
                     <p class="details_assignee">${taskData.assignee}</p>
@@ -126,5 +128,6 @@ function createHtmlConfirm(taskData) {
 }
 
 function saveNewData() {
-    console.log(data);
+    localStorage.setItem('tasksList', JSON.stringify(data));
+    console.log(localStorage.getItem('tasksList'));
 }
