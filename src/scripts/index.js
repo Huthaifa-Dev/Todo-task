@@ -104,16 +104,17 @@ function emptyForm() {
 }
 
 function createHtmlTask(taskData) {
-    return `<li class="main_tasks-item" data-id="${taskData.id}" data-isDone="${taskData.isDone}">
-                <div class="details">
-                    <p class="details_name">${taskData.name}</p>
-                    <p class="details_assignee">${taskData.assignee}</p>
-                </div>
-                <div class="control">
-                    <button onClick="removeHandler(${taskData.id})" class="control_button-delete">❌</button>
-                    <button onClick="markHandler(${taskData.id})" class="control_button-done">✔️</button>
-                </div>
-            </li> `
+    return `
+    <li class="main_tasks-item" data-id="${taskData.id}" data-isDone="${taskData.isDone}">
+        <div class="details">
+            <p class="details_name">${taskData.name}</p>
+            <p class="details_assignee">${taskData.assignee}</p>
+        </div>
+        <div class="control">
+            <button onClick="removeHandler(${taskData.id})" class="control_button-delete">❌</button>
+            <button onClick="markHandler(${taskData.id})" class="control_button-done">✔️</button>
+        </div>
+    </li> `
 }
 
 function createHtmlConfirm(taskData) {

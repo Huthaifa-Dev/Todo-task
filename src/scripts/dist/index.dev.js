@@ -113,7 +113,7 @@ function emptyForm() {
 }
 
 function createHtmlTask(taskData) {
-  return "<li class=\"main_tasks-item\" data-id=\"".concat(taskData.id, "\" data-isDone=\"").concat(taskData.isDone, "\">\n                <div class=\"details\">\n                    <p class=\"details_name\">").concat(taskData.name, "</p>\n                    <p class=\"details_assignee\">").concat(taskData.assignee, "</p>\n                </div>\n                <div class=\"control\">\n                    <button onClick=\"removeHandler(").concat(taskData.id, ")\" class=\"control_button-delete\">\u274C</button>\n                    <button onClick=\"markHandler(").concat(taskData.id, ")\" class=\"control_button-done\">\u2714\uFE0F</button>\n                </div>\n            </li> ");
+  return "\n    <li class=\"main_tasks-item\" data-id=\"".concat(taskData.id, "\" data-isDone=\"").concat(taskData.isDone, "\">\n        <div class=\"details\">\n            <p class=\"details_name\">").concat(taskData.name, "</p>\n            <p class=\"details_assignee\">").concat(taskData.assignee, "</p>\n        </div>\n        <div class=\"control\">\n            <button onClick=\"removeHandler(").concat(taskData.id, ")\" class=\"control_button-delete\">\u274C</button>\n            <button onClick=\"markHandler(").concat(taskData.id, ")\" class=\"control_button-done\">\u2714\uFE0F</button>\n        </div>\n    </li> ");
 }
 
 function createHtmlConfirm(taskData) {
