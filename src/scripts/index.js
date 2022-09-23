@@ -21,7 +21,7 @@ clearSearch.addEventListener("click", clearSearchClickHandler);
 function addTaskClickHandler(event) {
     event.preventDefault();
     let newTask = taskForm.value;
-    let newAssignee = assignee.value;
+    const newAssignee = assignee.value;
     let newObj;
     if (newTask && newAssignee) {
         newObj = {
